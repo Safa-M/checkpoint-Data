@@ -1,0 +1,28 @@
+ALGORITHM Checkpoint_Data
+VAR
+    Set1,Set2 : ARRAY_OF INTEGER[];
+    i,j : INTEGER;
+BEGIN
+    write("Give two sets");
+    read(Set1);
+    read(Set1);
+    L1=length(Set1);
+    L2=length(Set2);
+    Sum=0;
+    FOR i FROM 0 TO (L1-1) DO
+        FOR j FROM 0 TO (L2-1) DO
+            IF (Set1[i]<>Set2[j]) THEN
+            Sum:=Sum+Set2[j];
+            END_IF
+        END_FOR
+    END_FOR
+       FOR i FROM 0 TO (L2-1) DO
+        FOR j FROM 0 TO (L1-1) DO
+            IF (Set2[i]<>Set1[j]) THEN
+            Sum:=Sum+Set1[j];
+            END_IF
+        END_FOR
+    END_FOR
+    write(Sum);
+
+END

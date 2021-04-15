@@ -1,45 +1,29 @@
-ALGORITHM hash
+ALGORITHM Checkpoint_Data
 VAR
-   // declaring hash table
-   htab : HASH_TABLE<INTEGER,STRING>;
-   // HASH_TABLE<Key_type,Value_type>
-  
+   htab : HASH_TABLE<INTEGER,INTEGER>;
+   set1,set2 : INTEGER[];
+   i,count,L1,L2,Sum1,Sum2,Sum : INTEGER;
 BEGIN
-   htab : HASH_TABLE<INTEGER,STRING>;
-
-   htab.insert(0,"zero");
-   htab.insert(1,"one");
-   htab.insert(2,"two");
-   htab.insert(3,"three");
-   Write(htab);
-
-   htab.lookup(0); // TRUE
-   htab.lookup(5); // FALSE
-
-
-   htab.get(0); // "zero"
-
-   htab.delete(0);
-
-   // duplicate key
-   htab.insert(3,"three-a");
-   htab.insert(3,"three-b");
-
-   htab.get(3) // "three-b"
-   // there is no duplicated key (after the execution this
-   // instruction will delete the first value, and replace it the second)
-
-   // duplicate value
-   htab.insert(3,"three-a");
-   htab.insert(4,"three-a");
-
-   // hash function
-   HASH_TABLE<STRING,CHAR>
-   // this is the way to declare a hash function
-   // we'll see it more in the function course
-
-   FUNCTION hash_function(STRING str) : INTEGER
-   BEGIN
-       RETURN str.length;
-   END
+   Read(set1);
+   Read(set2);
+   L1=length(Set1);
+   L2=length(Set2);
+   FOR i FROM 0 TO (L1-1) DO
+       htab.insert(set1[i],1)
+   END_FOR
+   FOR i FROM 0 TO (L2-1) DO
+       IF (htab.lookup(set2[i]) = TRUE) THEN
+           count := htab.get(set2[i]);
+           htab.insert(set2[i],count+1);
+       ELSE
+           htab.insert(set2[i],1);
+       END_IF
+   END_FOR
+   FOR i FROM 0 TO (L1-1) DO
+       IF (htab.get(set1[i]) > 1) THEN
+           Sum:=Sum+set1[i];
+           BREAK;
+       END_IF
+   END_FOR
+   Write(Sum);
 END

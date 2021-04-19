@@ -33,6 +33,6 @@ BEGIN
            BREAK;
        END_IF
    END_FOR
-   Sum:=Sum1+Sum2;
+   Sum:=Sum1; //Sum1=Sum2
    Write(Sum);
 END

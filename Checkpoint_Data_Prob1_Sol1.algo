@@ -31,7 +31,7 @@ BEGIN
     ELSE IF (Sum1>Sum2) THEN
         Sum:=Sum2;
     ELSE
-        Sum:=Sum1=Sum2;
+        Sum:=Sum1; //Sum1=Sum2
     END_IF
     write(Sum);
 END
